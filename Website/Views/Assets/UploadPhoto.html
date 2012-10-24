@@ -1,0 +1,48 @@
+﻿<div id="modal_upload_photo" class="modal hide fade" style="display: none;">
+    <div class="modal-header">
+      <a href="#/" class="close" data-dismiss="modal">×</a>
+      <h3>Upload a Photo</h3>
+    </div>
+    <div class="modal-body">
+
+        <p class="intro">Please fill in the form below.</p>
+
+        <div id="modal_login_errors" class="alert alert-error" style="display: none;">
+            <span></span>
+        </div>
+
+        <form name="modal_upload_photo" class="form-horizontal well">
+            <div class="control-group" ng-class="{error: modal_upload_photo.title.$invalid}">
+                <label class="control-label">Photo Title</label>
+                <div class="controls">
+                    <input type="text" name="Title" ng-model="upload.Title" required>
+                    <span ng-show="modal_upload_photo.Title.$error.required" class="help-inline"><span class="label label-important">Required</span></span>
+                </div>
+            </div>
+
+            <div class="control-group" ng-class="{error: modal_upload_photo.userName.$invalid}">
+                <label class="control-label">Tags</label>
+                <div class="controls">
+                    <input type="text" name="Tags" ng-model="upload.Tags" placeholder="Separate with commas (,)">
+                </div>
+            </div>
+
+            <div class="control-group" ng-class="{error: modal_upload_photo.FileUrl.$invalid}">
+                <label class="control-label">Photo</label>
+                <div class="controls">
+                    <a class="btn" style="padding: 4px; margin-right: 10px; float: left;">
+                        <img id="asset-photo" ng-src="{{upload.FileUrl}}" src="/Content/Images/placeholder.jpg" style="-width: 100px; height: 100px;">
+                    </a>
+                    <h6 style="margin-bottom: 5px;">To change:</h6>
+                    <ul id="asset-photo-upload" class="unstyled"></ul>
+                    <small>300Kb max.</small>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#/" class="btn" data-dismiss="modal">Close</a>  
+      <a href="" class="btn btn-primary" ng-click="submit()" ng-disabled="isSaveDisabled()">Upload</a>
+    </div>
+</div>

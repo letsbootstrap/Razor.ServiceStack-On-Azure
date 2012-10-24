@@ -1,0 +1,130 @@
+﻿@using Website.Infrustructure.API
+@inherits ViewPage<AssetsResponse>
+@{
+    Layout = "StandardLayout";
+    ViewBag.Title = "Website - My Assets";
+    String Tag = "";
+    if (!string.IsNullOrEmpty(Model.Tag)) 
+    {
+        Tag = "- Tagged '" + Model.Tag + "'";
+    }
+}
+
+<div class="page-header">
+    <h1 class="pull-left">My Photos @Tag</h1>
+    <div class="pull-right">
+        <a class="btn" href='#/upload/photo' style="margin-top: 14px;">Upload Photo</a>
+    </div>
+    <br style="clear: both;" />
+</div>
+
+<div class="row">
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+        <strong>Developers!</strong> <a href="/about/api" style="text-decoration: underline;">Learn more</a> about using our API to save and access your photos.
+    </div>
+    <div class="span12">
+        @if (Model.items.Count() > 0)
+        {
+        <ul class="thumbnails wookmark">
+            @foreach (var item in Model.items)
+            {
+            <li class="span4 wookmark-item">
+                <div class="thumbnail">
+                    <a href="#lightbox-@item.Id.ToString()" class="thumbnail" data-toggle="lightbox">
+                        <img src="@item.FileUrl" alt="@item.Title">
+                    </a>
+                    <div class="lightbox fade" id="lightbox-@item.Id.ToString()" style="display: none;">
+	                    <div class='lightbox-content'>
+		                    <img src="@item.FileUrl">
+	                    </div>
+                    </div>
+                    <h4><a href="#lightbox-@item.Id.ToString()" class="header-link" data-toggle="lightbox">@item.Title</a> 
+                        <i class="icon-remove pull-right wookmark-item-delete" data-id="@item.Id.ToString()" rel="tooltip" title="Delete this photo"></i>
+                    </h4>
+                    @foreach (string tag in @item.TagList())
+                    {
+                        <a href="/assets/tag/@tag" class="label">@tag</a> 
+                    }
+                </div>
+            </li>
+            }
+        </ul>
+        }
+        else
+        {
+        <p class="lead">No photos yet.</p>
+        }
+    </div>
+</div>
+
+@section scripts {
+    <script src="/Content/Scripts/fileuploader.js"></script>	
+    <script src="/Content/Scripts/jquery.wookmark.js"></script>	
+    <script type="text/javascript">
+        angular.module('website', []).
+          config(['$routeProvider', function ($routeProvider) {
+              $routeProvider.
+              when('/upload/photo', { templateUrl: '/Views/Assets/UploadPhoto.html', controller: UploadPhotoCtrl }).
+              otherwise({ redirectTo: '/' });
+          }]);
+
+        var UploadPhotoCtrl = ['$scope', '$http', function ($scope, $http) {
+            var login = $scope.upload = { Title: '', Tags: '', FileUrl: '/Content/Images/placeholder.jpg' };
+
+            $('#modal_upload_photo').modal('show');
+            $('#modal_upload_photo').on('hidden', function () {
+                window.location = '#';
+            });
+
+            $scope.$on("$viewContentLoaded", function () {
+                //hideLoader();
+            });
+
+            $scope.isSaveDisabled = function () {
+                return $('#asset-photo').attr('src') == '/Content/Images/placeholder.jpg' || $scope.modal_upload_photo.$invalid || angular.equals($scope.upload, $scope.form);
+            };
+
+            $scope.submit = function () {
+                if ($scope.isSaveDisabled())
+                    return false;
+
+                $scope.upload.FileUrl = $('#asset-photo').attr('src');
+                showAlert('Saving photo...');
+
+                $http.post('?', { 'Photo': $scope.upload })
+                    .success(function (data, status, headers, config) {
+                        window.location = '/assets';
+                    })
+                    .error(function (data, status, headers, config) {
+                        showAlert("Sorry we could not save your photo at this time.", "error");
+                    });
+            };
+            var session = getRandomString(8, false).toLowerCase();
+            uploadImageControl('asset-photo', '/Files/Asset-Photo-' + session, 300000);
+        }];
+
+        $(function () {
+            $(".wookmark-item-delete").click(function () {
+                if (confirm("Are you sure?")) {
+                    $.ajax({
+                        url: '/assets/' + $(this).attr('data-id'),
+                        type: 'DELETE',
+                        success: function (result) {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+
+            function initLayout() {
+                $('.wookmark-item').wookmark({
+                    container: $('.wookmark'),
+                    offset: 16
+                });
+
+            }
+            var t = setInterval(initLayout, 200);
+        });
+    </script>
+}

@@ -1,0 +1,179 @@
+﻿@inherits ViewPage
+@{
+    ViewBag.Title = "Website - About";
+    Layout = "StandardLayout";
+}
+
+@section head {
+    <meta name="description" content="About meta tag description here...">
+}
+
+<div class="page-header">
+    <h1>About My Photos</h1>
+</div>
+
+<p class="lead">A starter project to get started with Razor.Servicestack, Windows Azure, SQL Azure, (Azure) blob storage, social sign-ins, and AngularJS.</p>
+
+<div class="row">
+    <div class="span12">
+        <h3>Project Overview</h3>
+        <p>This project was started in order to experiment and road test both the Razor.ServiceStack project and Windows Azure, and
+            to build an web app using them.
+            The idea is simple, this app is an online photo manager, like a simple Dropbox for your photos. Can can sign in using
+            your social accounts such as Twitter or Facebook, and allows you to store your photos in the cloud.
+        </p>
+
+        <h5>Built into this project</h5>
+        <i>We've cooked in some useful things:</i><br /><br />
+        <ul>
+            <li>Generic functions for managing files in Azure Storage.</li>
+            <li>A generic repository for working with OrmLite.</li>
+            <li>A customizable user entity and authentication session handling.</li>
+            <li>Utilizes SquishIt to compress the Javascript and Css files on the fly, configured to work with Azure too!</li>
+            <li>Uses Twitter Bootstrap.</li>
+            <li>Wired up for AngularJS, including routing.</li>
+        </ul>
+        <div class="alert alert-info">
+          We've also implemented the above to be easily and quickly removed, replaced, or disabled if you so desire.
+        </div>
+
+        <h3>Built with ServiceStack</h3>
+        <p>This project utilizes the core ServiceStack webservice framework to expose a simple but robust RESTful API.
+            It then leverages the Razor.ServiceStack MVC Razor Engine to power the entire web application's UI. The two
+            provide a direct replacement or ASP.NET MVC and Web API. On top of this
+            it utilizes the high perfomance parts that come with ServiceStack such as ServiceStack.Ormlite for the ORM, 
+            ServiceStack.Text for fast serialization, Funq for the DI framework, and ServiceStack.Caching for 
+            performance caching.<br /><br />
+
+            <i>The immediate benefits we have seen are:</i>
+            <ul>
+              <li>The MVC views and REStful API are the same service implementation making one unified HTTP stack.</li>
+              <li>The ServiceStack service implementation also supports SOAP and CSV as well as XML and JSON.</li>
+              <li>Razor.ServiceStack has more flexible routing, and smarter view pages than ASP.NET MVC.</li>
+              <li>Its also lighter and easier to configure than ASP.NET MVC.</li>
+              <li>The components all work together out of the box: Ormlite, Funq, Caching and Text.</li>
+              <li>ServiceStack supports social sign ins using Facebook and Twitter, as well as traditional manual user sign ups.</li>
+              <li>Extendable authentication model allowing for many different types of authentication implementations, works across both the API and UI layers.</li>
+            </ul>
+        </p>
+
+        <h3>Runs on Windows Azure</h3>
+        <p>This was built from the ground up as an Azure Cloud Service application. We also wanted it to be completely
+            Azure ready and to that end it needed to work with SQL Azure and Azure blob storage. The database can work
+            off a local SQL Server database, and seamlessly deploys itself and transitions to SQL Azure with no
+            configuration change at all on deployment. You can connect to, and upload the photos into Azure blob storage from
+            you local machine as well as from within Azure, so you know from the start that it will work, and will
+            continue to work once you have deployed to Windows Azure. ServiceStack.Caching also supports Azure In-Memory DataCaching.
+        </p>
+
+        <h3>Twitter Bootstrapped</h3>
+        <p>Cross browser, extendable, and responsive design powered by the Twitter Bootstrap front-end framework.
+            No customization has been done here, so if you are familar with Twitter Bootstrap then you can jump straight
+            in and start working with it easily.
+        </p>
+
+    </div>
+</div>
+
+<div id="deployment" class="page-header">
+    <h1>Deployment Instructions</h1>
+</div>
+
+<p class="lead">A few steps and you will be set to deploy this to Windows Azure Cloud Services!</p>
+
+<div class="row">
+    <div class="span12">
+        <dl>
+          <dt>1. Have a Windows Azure account</dt>
+          <dd>If you don't have one then you can sign up for a <a href="https://www.windowsazure.com/en-us/pricing/free-trial/">free 3 month trial</a>. You will need to create a cloud service application,
+              a SQL Azure database, and an Azure Storage account within your Azure dashboard. There are plenty of
+              quick starts on the web to help you through these steps if you need them. Note down your Storage account name and primary access key, along with your database
+              connection string as you will need them later.
+          </dd>
+          <dt>2. Install Visual Studio</dt>
+          <dd>If you don't have Microsoft Visual Studio then you can download and install the free <a href="http://www.microsoft.com/visualstudio/eng/downloads">Microsoft Visual Studio
+              Express 2012 for Web edition</a>. It will work just fine.
+          </dd>
+          <dt>3. Configure Visual Studio to publish to your Cloud Service application</dt>
+          <dd>Again there are plenty of quick starts on the web to help you through these steps if you need them.
+          </dd>
+          <dt>4. Edit the web.config file</dt>
+          <dd>
+              Toggle the below value from true to false to instruct the app to re-build the database. On first deployment
+              have this set to true and it will create required tables within your local SQL Server or the SQL Azure database:<br /><br />
+              <div class="alert">
+                  <strong>Warning!</strong> Having this set to true will re-create your database on next page load, 
+                  this includes trashing all data in the current database tables! So set it to true, deploy, load a page in your browser, 
+                  then set it to false, and re-deploy.
+              </div>
+              <pre>&lt;add key="BuildDatabase" value="false" /&gt;</pre>
+
+              <br />
+              Sign up for your own <a href="https://dev.twitter.com/apps/new">Twitter</a> and <a href="https://developers.facebook.com/apps/">Facebook</a> apps, and put your own app values in:<br /><br />
+              <pre>&lt;add key="oauth.twitter.ConsumerKey" value="" /&gt;
+&lt;add key="oauth.twitter.ConsumerSecret" value="" /&gt;
+&lt;add key="oauth.facebook.AppId" value="" /&gt;
+&lt;add key="oauth.facebook.AppSecret" value="" /&gt;</pre>
+
+              <br />
+              Put your Azure Storage account's connection string in here:<br /><br />
+              <pre>&lt;add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=YOURACCOUNTNAMEHERE;AccountKey=YOURACCOUNTPRIMARYKEYHERE" /&gt;</pre>
+              
+              <br />
+              Now set your local SQL Server test database connection string in here:<br /><br />
+              <pre>&lt;onnectionStrings&gt;
+    &lt;add name="DefaultConnection" providerName="System.Data.SqlClient" connectionString="Data Source=localhost;Initial Catalog=LOCALDBNAME;User ID=LOCALDBUSER;Password=LOCALDBPASSWORD" /&gt;
+&lt;/connectionStrings&gt;</pre>
+                    
+              <br />
+              Lastly, if you change the Website project's namespace, you will need to set it here:<br /><br />
+              <pre>&lt;system.web.webPages.razor&gt;
+    ...
+        &lt;namespaces&gt;
+            ...
+            &lt;add namespace="<b>Website</b>" /&gt;
+            ...</pre>
+              
+          </dd>
+          <dt>5. Edit the Web.Release.config file</dt>
+          <dd>These are your production values which will be used when you publish to Azure Cloud Services. Firstly set
+              your production SQL Azure database connection string in the following place:<br /><br />
+              <pre>&lt;connectionStrings&gt;
+    &lt;add name="DefaultConnection" connectionString="Data Source=tcp:AZUREDATABASESERVER.database.windows.net,1433;Initial Catalog=MYDATABASENAME;User ID=MYDATABASEUSER@AZUREDATABASESERVER;Password=MYDATABASEPASSWORD"
+      xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/&gt;
+&lt;/connectionStrings&gt;</pre>
+
+              <br />
+              Lastly, set the following paths to your production domain (app url location):<br /><br />
+              <pre>&lt;appSettings&gt;
+    &lt;add key="oauth.twitter.RedirectUrl" value="http://<b>mydomain.com</b>"
+         xdt:Transform="SetAttributes" xdt:Locator="Match(key)"/&gt;
+    &lt;add key="oauth.twitter.CallbackUrl" value="http://<b>mydomain.com</b>/auth/twitter"
+         xdt:Transform="SetAttributes" xdt:Locator="Match(key)"/&gt;
+    &lt;add key="oauth.facebook.RedirectUrl" value="http://<b>mydomain.com</b>"
+         xdt:Transform="SetAttributes" xdt:Locator="Match(key)"/&gt;
+    &lt;add key="oauth.facebook.CallbackUrl" value="http://<b>mydomain.com</b>/auth/facebook"
+         xdt:Transform="SetAttributes" xdt:Locator="Match(key)"/&gt;
+&lt;/appSettings&gt;</pre>
+
+          <dt>6. You are ready!</dt>
+          <dd>Start running it locally through Visual Studio, and when you are ready, publish to Windows Azure Cloud
+              Services and watch it run on Windows Azure. To do this right click on the "Website" project node within
+              the Solution Explorer and select "Publish to Windows Azure". Once you have initially setup the correct permissions
+              within the wizard to publish to your Cloud Service app, this process is a one click exercise each time you wish to deploy.
+          </dd>
+          <dt>7. Tips and tricks</dt>
+          <dd>If your app can not connect to your Azure database, you may need to enable access to your database from Cloud
+              Services. Within the Azure Dashboard goto:
+              <ol>
+                  <li>Your database.</li>
+                  <li>Click on the <i>server name link</i> in the right side panel.</li>
+                  <li>Click on the <i>Configure</i> tab option at the top.</li>
+                  <li>Under the <i>Allow services</i> heading switch (near the bottom) <i>Windows Azure Services</i> to <i>YES</i>.</li>
+              </ol>
+          </dd>
+          </dd>
+
+        </dl>
+    </div>
+</div>

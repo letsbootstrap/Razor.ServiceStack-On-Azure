@@ -1,0 +1,10 @@
+﻿@using Website.Infrustructure.ViewModels
+@inherits ViewPage<ViewMessage>
+
+@{
+    Layout = "StandardLayout";
+    ViewBag.Title = "Website - " + Model.Title;
+}
+
+<h1>@Model.Title <small>@Model.Introduction</small></h1>
+@Model.Message.AsRaw()

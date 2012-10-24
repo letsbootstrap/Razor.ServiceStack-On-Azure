@@ -1,0 +1,135 @@
+﻿@inherits ViewPage
+@{
+    ViewBag.Title = "Website - About The API";
+    Layout = "StandardLayout";
+}
+
+@section head {
+    <meta name="description" content="About the API meta tag description here...">
+}
+
+<div class="page-header">
+    <h1>About our API</h1>
+</div>
+
+<p class="lead">Learn about how to use our API to save and access your photos from 3rd party clients.</p>
+
+<div class="row">
+    <div class="span12">
+        <div class="alert alert-info">
+            <strong>Your API Key:</strong> <span id="apikey"></span>
+        </div>
+
+        <h3>Fetching your photos</h3>
+
+        <dl class="dl-horizontal">
+          <dt>Description</dt>
+          <dd>Use this endpoint to fetch all your photos</dd>
+          <dt>Resource URL</dt>
+          <dd>GET : http://127.0.0.1:81/assets?apikey={YOURKEY}&format={FORMAT}</dd>
+          <dt>Response formats</dt>
+          <dd>json, xml, csv</dd>
+          <dt>Example Response</dt>
+          <dd>
+              <pre>
+[ { "FileUrl" : "http://127.0.0.1:81/image1.jpg",
+    "Id" : 4,
+    "Tags" : "one, more, world",
+    "Title" : "Another photo here",
+    "UserAuthId" : 1
+  },
+  { "FileUrl" : "http://127.0.0.1:81/image2.jpg",
+    "Id" : 7,
+    "Tags" : "James Bond",
+    "Title" : "Skyfall!",
+    "UserAuthId" : 1
+  }
+]</pre>
+          </dd>
+        </dl>
+
+        <h3>Fetching your photos by tag</h3>
+
+        <dl class="dl-horizontal">
+          <dt>Description</dt>
+          <dd>Use this endpoint to fetch your photos that have been tagged with a specific tag</dd>
+          <dt>Resource URL</dt>
+          <dd>GET : http://127.0.0.1:81/assets/tag/{TAG}?apikey={YOURKEY}&format={FORMAT}</dd>
+          <dt>Response formats</dt>
+          <dd>json, xml, csv</dd>
+          <dt>Example Response</dt>
+          <dd>
+              <pre>
+[ { "FileUrl" : "http://127.0.0.1:81/image1.jpg",
+    "Id" : 4,
+    "Tags" : "one, more, world",
+    "Title" : "Another photo here",
+    "UserAuthId" : 1
+  },
+  { "FileUrl" : "http://127.0.0.1:81/image2.jpg",
+    "Id" : 7,
+    "Tags" : "James Bond",
+    "Title" : "Skyfall!",
+    "UserAuthId" : 1
+  }
+]</pre>
+          </dd>
+        </dl>
+
+        <h3>Saving a photo</h3>
+
+      <dl class="dl-horizontal">
+          <dt>Description</dt>
+          <dd>Saves a new photo. This does not support the uploading of the file itsefl, only a URL reference to it.</dd>
+          <dt>Resource URL</dt>
+          <dd>POST : http://127.0.0.1:81/assets?apikey={YOURKEY}&format={FORMAT}</dd>
+          <dt>Headers</dt>
+          <dd>Content-Type: <i>application/json</i> / <i>text/xml</i></dd>
+          <dt>Example POST Data</dt>
+          <dd>
+              <pre>
+{ "Photo" : 
+    { "FileUrl" : "http://127.0.0.1:81/image1.jpg",
+      "Tags" : "tag1, tag2",
+      "Title" : "My title"
+    } 
+}</pre>
+          </dd>
+          <dt>Response formats</dt>
+          <dd>json, xml</dd>
+          <dt>Example Response</dt>
+          <dd>
+              <pre>
+{ "Photo" : 
+    { "Id" : 7,
+      "FileUrl" : "http://127.0.0.1:81/image1.jpg",
+      "Tags" : "tag1, tag2",
+      "Title" : "My title",
+      "UserAuthId" : 1
+    } 
+}</pre>
+          </dd>
+        </dl>
+
+        <h3>Deleting a photo</h3>
+
+        <dl class="dl-horizontal">
+          <dt>Description</dt>
+          <dd>Deletes an existing photo.</dd>
+          <dt>Resource URL</dt>
+          <dd>DELETE : http://127.0.0.1:81/assets/{ID}?apikey={YOURKEY} </dd>
+        </dl>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+    $(function () {
+        if ($.cookie('auth-session') == null) {
+            $('#apikey').text('You need to Sign In first!');
+        } else {
+            $('#apikey').text($.cookie('auth-session'));
+        }
+    });
+    </script>
+}

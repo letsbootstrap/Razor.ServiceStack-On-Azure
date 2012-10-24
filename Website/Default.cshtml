@@ -1,0 +1,37 @@
+﻿@inherits ViewPage
+@{
+    Layout = "StandardLayout";
+    ViewBag.Title = "Website - Home";
+}
+
+@section head {
+    <meta name="description" content="Meta description for the home page right here.">
+}
+
+<div class="hero-unit">
+    <img class="hero-image pull-left" src="/Content/Images/icon-photos.png" />
+    <div class="hero-content">
+        <h1>My Photos</h1>
+        <p>A starter project to get started with Razor.Servicestack, Windows Azure, SQL Azure, (Azure) blob storage, 
+           social sign-ins, and AngularJS.</p>
+        <p><a href="/About" class="btn btn-primary btn-large">Learn more ></a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span4">
+        <h4>Built with ServiceStack</h4>
+        <p>Completely built using Razor.ServiceStack for MVC and for its RESTful API. Runs on high performance parts such as OrmLite.</p>
+        <p><a class="btn" href="/About">View details ></a></p>
+    </div>
+    <div class="span4">
+        <h4>Runs on Azure</h4>
+        <p>Deploy to Windows Azure as a Cloud Service application, and built to work with SQL Azure and Blob Storage.</p>
+        <p><a class="btn" href="/About">View details ></a></p>
+    </div>
+    <div class="span4">
+        <h4>Twitter Bootstrapped</h4>
+        <p>Cross browser, extendable, and responsive design powered by the Twitter Bootstrap front-end framework.</p>
+        <p><a class="btn" href="/About">View details ></a></p>
+    </div>
+</div>

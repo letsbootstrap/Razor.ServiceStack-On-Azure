@@ -1,0 +1,81 @@
+﻿@using SquishIt.Framework
+@using System.Configuration
+@using ServiceStack.ServiceInterface.Auth
+
+<!DOCTYPE html>
+<html xmlns:og="http://opengraphprotocol.org/schema/" ng-app="website">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    @Bundle.Css().RenderCachedAssetTag("stylebase").AsRaw()
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="/Content/scripts/angular-1.0.1.min.js"></script>
+    <script src="/Content/scripts/angular-sanitize-1.0.1.min.js"></script>
+    <script src="/Content/scripts/angular-resource-1.0.1.min.js"></script>	
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    @RenderSection("head", required: false)
+
+    <!-- Google Analytics code here... -->
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Website</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/Assets">My Photos</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/about">This Project</a></li>
+                    <li><a href="/about#deployment">Deployment Instructions</a></li>
+                    <li><a href="/about/api">Developer API</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+                <li id="signin-link"><a href="/SignIn" rel="tooltip" title="Sign In" data-placement="bottom">&nbsp;</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+      <div class="b-col_separator" style="margin-top: -1px; border-top: none;"></div>
+    </div>
+
+    <!-- Angular Views -->
+    <div ng-view></div>
+
+    <div class="container">
+
+        @RenderBody()
+
+    </div> <!-- /container -->
+
+    <footer class="footer" style="display: none;">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <ul class="footer-links">
+          <li><a href="/About">About</a></li>
+        </ul>
+        <small>Copyright &#169; 2012 Website.</small>
+      </div>
+    </footer>
+
+    @Bundle.JavaScript().RenderCachedAssetTag("codebase").AsRaw()
+    @RenderSection("scripts", required: false)
+</body>
+</html>

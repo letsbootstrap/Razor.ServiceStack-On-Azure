@@ -1,0 +1,469 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77EBA5EE-2B98-4E42-984A-70B863DF14CA}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Website</RootNamespace>
+    <AssemblyName>Website</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.48.4489.28432\lib\net20\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="EcmaScript.NET">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\EcmaScript.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.7.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.1.7.0.0\lib\net35-full\Microsoft.WindowsAzure.StorageClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack">
+      <HintPath>..\packages\ServiceStack.3.9.24\lib\net35\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.3.9.24\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Common.3.9.24\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.3.9.24\lib\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.3.9.24\lib\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Razor">
+      <HintPath>..\packages\ServiceStack.Razor.3.9.24\lib\net40\ServiceStack.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis">
+      <HintPath>..\packages\ServiceStack.Redis.3.9.24\lib\net35\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.ServiceInterface">
+      <HintPath>..\packages\ServiceStack.3.9.24\lib\net35\ServiceStack.ServiceInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.24\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="SquishIt.Framework">
+      <HintPath>..\packages\SquishIt.0.9.1\lib\SquishIt.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\ServiceStack.Razor.3.9.24\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\ServiceStack.Razor.3.9.24\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\ServiceStack.Razor.3.9.24\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\ServiceStack.Razor.3.9.24\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2.Asynchronous">
+      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Asynchronous.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2.Streaming">
+      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Streaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.2.0.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppHost.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrustructure\API\AccountService.cs" />
+    <Compile Include="Infrustructure\API\AssetsService.cs" />
+    <Compile Include="Infrustructure\API\FilesService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrustructure\Authentication\CustomBasicAuthentication.cs" />
+    <Compile Include="Infrustructure\Authentication\CustomUserSession.cs" />
+    <Compile Include="Infrustructure\DataSource\Poco.cs" />
+    <Compile Include="Infrustructure\DataSource\Repository.cs" />
+    <Compile Include="Infrustructure\Manager\StorageManager.cs" />
+    <Compile Include="Infrustructure\Models\Asset.cs" />
+    <Compile Include="Infrustructure\Models\User.cs" />
+    <Compile Include="Infrustructure\Utils\General.cs" />
+    <Compile Include="Infrustructure\Utils\TwitterHelper.cs" />
+    <Compile Include="Infrustructure\ViewModels\ViewMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebRole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap-lightbox.css" />
+    <Content Include="Content\css\bootstrap-responsive.css" />
+    <Content Include="Content\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\themes\bigbox.css" />
+    <Content Include="Content\css\themes\boldlight.css" />
+    <Content Include="Content\css\themes\jackedup.css" />
+    <Content Include="Content\css\themes\libnotify.css" />
+    <Content Include="Content\css\themes\original.css" />
+    <Content Include="Content\Images\avatar.jpg" />
+    <Content Include="Content\css\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\css\images\glyphicons-halflings.png" />
+    <Content Include="Content\Images\icon-photos.png" />
+    <Content Include="Content\Images\placeholder.jpg" />
+    <Content Include="Content\Images\sign-in-with-facebook.png" />
+    <Content Include="Content\Images\sign-in-with-twitter-l.png" />
+    <Content Include="Content\scripts\angular-1.0.1.min.js" />
+    <Content Include="Content\scripts\angular-bootstrap-prettify.js" />
+    <Content Include="Content\scripts\angular-bootstrap-prettify.min.js" />
+    <Content Include="Content\scripts\angular-bootstrap.js" />
+    <Content Include="Content\scripts\angular-bootstrap.min.js" />
+    <Content Include="Content\scripts\angular-cookies.js" />
+    <Content Include="Content\scripts\angular-cookies.min.js" />
+    <Content Include="Content\scripts\angular-loader.js" />
+    <Content Include="Content\scripts\angular-loader.min.js" />
+    <Content Include="Content\scripts\angular-mocks.js" />
+    <Content Include="Content\scripts\angular-resource-1.0.1.min.js" />
+    <Content Include="Content\scripts\angular-resource.js" />
+    <Content Include="Content\scripts\angular-resource.min.js" />
+    <Content Include="Content\scripts\angular-sanitize-1.0.1.min.js" />
+    <Content Include="Content\scripts\angular-sanitize.js" />
+    <Content Include="Content\scripts\angular-sanitize.min.js" />
+    <Content Include="Content\scripts\angular-scenario.js" />
+    <Content Include="Content\scripts\angular.js" />
+    <Content Include="Content\scripts\angular.min.js" />
+    <Content Include="Content\scripts\bootstrap-lightbox.js" />
+    <Content Include="Content\scripts\bootstrap-popover.js" />
+    <Content Include="Content\scripts\bootstrap.js" />
+    <Content Include="Content\scripts\bootstrap.min.js" />
+    <Content Include="Content\scripts\fileuploader.js" />
+    <Content Include="Content\scripts\humane.js" />
+    <Content Include="Content\scripts\humane.min.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_am-et.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_am.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ar-eg.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ar.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_bg-bg.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_bg.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_bn-bd.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_bn.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ca-es.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ca.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_cs-cz.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_cs.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_da-dk.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_da.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_de-at.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_de-be.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_de-ch.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_de-de.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_de-lu.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_de.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_el-gr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_el-polyton.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_el.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-as.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-au.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-dsrt-us.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-dsrt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-gb.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-gu.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-ie.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-iso.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-mh.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-mp.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-sg.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-um.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-us.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-vi.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-za.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en-zz.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_en.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_es-es.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_es.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_et-ee.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_et.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_eu-es.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_eu.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fa-ir.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fa.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fi-fi.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fi.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fil-ph.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fil.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-bl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-ca.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-fr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-gp.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-mc.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-mf.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-mq.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr-re.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_fr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_gl-es.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_gl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_gsw-ch.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_gsw.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_gu-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_gu.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_he-il.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_he.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_hi-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_hi.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_hr-hr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_hr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_hu-hu.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_hu.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_id-id.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_id.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_is-is.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_is.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_it-it.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_it.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_iw.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ja-jp.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ja.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_kn-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_kn.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ko-kr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ko.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ln-cd.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ln.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_lt-lt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_lt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_lv-lv.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_lv.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ml-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ml.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_mo.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_mr-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_mr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ms-my.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ms.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_mt-mt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_mt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_nl-nl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_nl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_no.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_or-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_or.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_pl-pl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_pl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_pt-br.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_pt-pt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_pt.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ro-ro.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ro.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ru-ru.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ru.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sk-sk.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sk.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sl-si.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sq-al.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sq.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sr-cyrl-rs.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sr-latn-rs.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sr-rs.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sv-se.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sv.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sw-tz.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_sw.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ta-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ta.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_te-in.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_te.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_th-th.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_th.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_tl-ph.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_tl.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_tr-tr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_tr.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_uk-ua.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_uk.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ur-pk.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_ur.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_vi-vn.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_vi.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_zh-cn.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_zh-hans-cn.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_zh-hans.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_zh-hk.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_zh-tw.js" />
+    <Content Include="Content\scripts\i18n\angular-locale_zh.js" />
+    <Content Include="About\Default.cshtml" />
+    <Content Include="About\Api.cshtml" />
+    <None Include="Content\scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Content\scripts\jquery-1.7.1.js" />
+    <Content Include="Content\scripts\jquery-1.7.1.min.js" />
+    <Content Include="Content\scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Content\scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Content\scripts\jquery.cookie.js" />
+    <Content Include="Content\scripts\jquery.elastic.js" />
+    <Content Include="Content\scripts\jquery.livequery.js" />
+    <Content Include="Content\scripts\jquery.sharrre-1.3.2.js" />
+    <Content Include="Content\scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Content\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Content\scripts\jquery.validate.js" />
+    <Content Include="Content\scripts\jquery.validate.min.js" />
+    <Content Include="Content\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\scripts\jquery.wookmark.js" />
+    <Content Include="Content\scripts\jstd-scenario-adapter-config.js" />
+    <Content Include="Content\scripts\jstd-scenario-adapter.js" />
+    <Content Include="Content\scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Content\scripts\knockout-2.1.0.js" />
+    <Content Include="Content\scripts\modernizr-2.5.3.js" />
+    <Content Include="Content\scripts\_references.js" />
+    <Content Include="Content\site.css" />
+    <Content Include="Content\site.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\Assets\UploadPhoto.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Default.cshtml" />
+    <Content Include="Views\Shared\StandardLayout.cshtml" />
+    <Content Include="NotFound.cshtml" />
+    <Content Include="Unavailable.cshtml" />
+    <Content Include="SignIn.cshtml" />
+    <Content Include="Views\Assets\Assets.cshtml" />
+    <Content Include="Views\Shared\Message.cshtml" />
+    <Content Include="Views\Shared\Empty.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:53258/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Website - Please SignIn";
+    Layout = "StandardLayout";
+}
+
+<h1 id="title">Please Sign In <small></small></h1>
+
+<div class="row">
+    <div class="span12" id="message">
+        <h4>Sign in using these services</h4>
+        <a href="@Url.Content("/auth/facebook")"><img src="/Content/Images/sign-in-with-facebook.png" alt="Sign-in with Facebook" /></a>
+        <a href="@Url.Content("/auth/twitter")"><img src="/Content/Images/sign-in-with-twitter-l.png" alt="Sign-in with Twitter" /></a>
+    </div>
+</div>
+
+@section scripts {
+<script type="text/javascript">
+    if (window.location.hash == '#s=1' && gup('return') != '') {
+        $('#title').text('Redirecting...');
+        $('#message').html('<p>If you are not redirected in a couple of seconds then please <a href="' + gup('return') + '">click here</a>.</p>');
+        window.location = gup('return');
+    } else if (window.location.hash == '#s=1') {
+        $('#title').text('Redirecting...');
+        $('#message').html('<p>If you are not redirected in a couple of seconds then please <a href="/">click here</a>.</p>');
+        window.location = '/';
+    }
+</script>
+}
